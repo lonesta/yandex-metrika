@@ -64,10 +64,10 @@ class YandexMetrika
     /**
      * YandexMetrika constructor.
      */
-    public function __construct()
+    public function __construct($token, $counter_id)
     {
-        $this->token = config('yandex-metrika.token');
-        $this->counter_id = config('yandex-metrika.counter_id');
+        $this->token = $token;
+        $this->counter_id = $counter_id;
         $this->cache = config('yandex-metrika.cache');
     }
 
