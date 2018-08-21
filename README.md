@@ -28,6 +28,7 @@ Alexusmai\YandexMetrika\YandexMetrikaServiceProvider::class,
 ```
 
 
+
 Публикуем файл настроек
 
 ``` php
