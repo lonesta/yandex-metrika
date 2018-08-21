@@ -572,7 +572,7 @@ class YandexMetrika
         } catch (ClientException $e)
         {
             //Данные не получены
-            $result = $e->getMessage();
+            $result = json_decode($e->getResponse()->getBody()->getContents());
         }
 
         return $result;
