@@ -562,26 +562,20 @@ class YandexMetrika
      */
     protected function request($url, $cacheName)
     {
-        return Cache::remember($cacheName, $this->cache, function() use($url){
-            try
-            {
-                $client = new GuzzleClient();
-                $response = $client->request('GET', $url);
+        try
+        {
+            $client = new GuzzleClient();
+            $response = $client->request('GET', $url);
 
-                //Получаем массив с данными
-                $result = json_decode($response->getBody(), true);
+            //Получаем массив с данными
+            $result = json_decode($response->getBody(), true);
+        } catch (ClientException $e)
+        {
+            //Данные не получены
+            $result = $e->getMessage();
+        }
 
-            } catch (ClientException $e)
-            {
-                //Логируем ошибку
-                Log::error('Yandex Metrika: '.$e->getMessage());
-
-                //Данные не получены
-                $result = null;
-            }
-
-            return $result;
-        });
+        return $result;
     }
 
 
