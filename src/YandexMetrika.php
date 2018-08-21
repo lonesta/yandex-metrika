@@ -64,7 +64,7 @@ class YandexMetrika
     /**
      * YandexMetrika constructor.
      */
-    public function __construct($token, $counter_id)
+    public function __construct($token = false, $counter_id = false)
     {
         $this->token = $token;
         $this->counter_id = $counter_id;
